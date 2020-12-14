@@ -16,7 +16,7 @@ options.add_argument('user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6)
 browser = webdriver.Chrome("C:/workspace/python/chromedriver/chromedriver.exe")
 browser.get("https://hd.mobileindex.com/member/login?url=https%3A%2F%2Fhd.mobileindex.com%2F")
 
-def log_in_mobile_index(browser):
+def log_in_mobile_index(browser, email, password, authkey):
     browser.find_element_by_name('igawEmail').send_keys(email)
     browser.find_element_by_name('igawPw').send_keys(password)
     browser.find_element_by_css_selector('.btn--sign').click()
@@ -52,7 +52,7 @@ import pandas as pd
 dates = pd.date_range(start="2020-05-01",end="2020-11-05").tolist()
 dates = [pd.Timestamp.strftime(x, '%Y-%m-%d') for x in dates]
 
-log_in_mobile_index(browser)
+log_in_mobile_index(browser, email, password, authkey)
 go_to_rank(browser)
 for date in dates:
     get_daily_rank(browser, date)
