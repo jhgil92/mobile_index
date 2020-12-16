@@ -5,6 +5,8 @@ import time
 email = ''
 password = ''
 auth = ''
+start_date = '2020-05-01'
+end_date = '2020-11-30'
 
 driver = webdriver.Chrome("C:/workspace/python/chromedriver/chromedriver.exe")
 driver.implicitly_wait(10)
@@ -43,7 +45,7 @@ def get_daily_rank(driver, date):
     print(f'{date} download done')
 
 import pandas as pd
-dates = pd.date_range(start="2020-11-11",end="2020-11-13").tolist()
+dates = pd.date_range(start = start_date,end = end_date).tolist()
 dates = [pd.Timestamp.strftime(x, '%Y-%m-%d') for x in dates]
 
 log_in_mobile_index(driver)
